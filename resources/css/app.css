@@ -9,3 +9,124 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+@font-face {
+    font-family: 'MyCustomFont';
+    src: url('/fonts/Sowjetschablone.ttf') format('ttf'),
+    url('/fonts/Sowjetschablone.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+::selection {
+    color: black;
+    background: #845e43;
+}
+
+.font-my-1{
+    font-family: MyCustomFont, sans-serif;
+}
+
+.btn-img-default{
+    cursor: pointer;
+    background-image: url('../../public/img/btn-def-img.jpg');
+    background-size: cover;
+    background-position: center;
+    transition: box-shadow 300ms;
+}
+
+.btn-img-default:hover{
+    box-shadow: 0 0 10px red;
+}
+
+.input_shadow{
+    transition: box-shadow 300ms;
+}
+
+.input_shadow:focus{
+    box-shadow: 0 0 20px darkorange;
+}
+
+.bg-if{
+    background-image: url("../img/welcome/if-bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-if2{
+    background-image: url("../img/welcome/if-bg2.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-profile{
+    background-image: url("../img/profile/profile_background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+.btn-red-shadow{
+    transition: box-shadow 300ms;
+}
+
+.btn-red-shadow:hover{
+    box-shadow: 0 0 10px red;
+}
+
+.btn-orange-shadow{
+    transition: box-shadow 300ms;
+}
+
+.btn-orange-shadow:hover{
+    box-shadow: 0 0 10px orange;
+}
+
+.btn-blue-shadow{
+    transition: box-shadow 300ms;
+}
+
+.btn-blue-shadow:hover{
+    box-shadow: 0 0 10px blue;
+}
+
+.bg-welcome{
+    background-color: #fdf7d5;
+}
+
+.btn-welcome{
+    cursor: pointer;
+    border: #6c94a4 solid 3px;
+    transition: border 300ms, background-color 300ms;
+}
+
+.btn-welcome:hover{
+    border: #6c94a4 solid 3px;
+    background-color: #c8c0a3;
+}
+
+.btn-nav{
+    border: #fdf7d5 solid 3px;
+    transition: background-color 300ms, border 300ms;
+}
+
+.btn-nav:hover{
+    border: #6c94a4 solid 3px;
+    background-color: #c8c0a3;
+}
+
+.input_form{
+    border: 2px solid #c6884b;
+    background-color: #634938;
+    color: white;
+}
+
+.welcome-estate{
+    box-shadow: 0 0 50px #845e43, inset 0 -15px 200px black;
+    transition: box-shadow 300ms;
+}
+
+.welcome-estate:hover{
+    box-shadow: 0 0 100px #845e43, inset 0 -200px 200px black;
+}
+
