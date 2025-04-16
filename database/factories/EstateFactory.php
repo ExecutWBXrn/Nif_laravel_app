@@ -17,12 +17,13 @@ class EstateFactory extends Factory
      */
     public function definition(): array
     {
+        $is_sell = $this->faker->boolean();
         return [
             'builder' => $this->faker->name(),
             'user_id' => User::factory(),
             'complex' => $this->faker->company(),
             'city' => $this->faker->city(),
-            'price' => $this->faker->numberBetween(50000, 1000000),
+            'price' => $this->faker->numberBetween(50000, 1000000)/($is_sell==1?1:200),
             'street' => $this->faker->streetName(),
             'description' => $this->faker->text(),
             'amount_of_room' => $this->faker->numberBetween(1, 5),
@@ -31,7 +32,7 @@ class EstateFactory extends Factory
             'square' => $this->faker->numberBetween(35, 300),
             'square_of_kitchen' => $this->faker->numberBetween(5, 30),
             'building_date' => $this->faker->date(),
-            'is_sell' => $this->faker->boolean(),
+            'is_sell' => $is_sell,
         ];
     }
 }

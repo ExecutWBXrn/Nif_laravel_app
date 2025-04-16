@@ -17,7 +17,7 @@
                             <h4>Обирайте разом із тисячами задоволених клієнтів.</h4>
                         </div>
                         <div class="flex gap-5">
-                            <a class="p-5 rounded-2xl btn-welcome">Переглянути об’єкти</a>
+                            <a href="/estate/buyNIF" class="p-5 rounded-2xl btn-welcome">Переглянути об’єкти</a>
                             <a href="/policy" class="p-5 rounded-2xl btn-welcome">Умови використання</a>
                         </div>
                     </div>
@@ -32,13 +32,25 @@
                 </div>
                 <div class="grid grid-cols-4 justify-items-center">
                     @foreach($estates as $estate)
-                        <a href="{{$estate['id']}}" class="border-5 border-[#6c94a4] rounded-4xl w-11/12 my-5 h-100 bg-if cursor-pointer welcome-estate content-end" style="background-image: url('https://picsum.photos/seed/{{ rand(0, 1000000) }}/900/900')">
+                        <a id="estate-{{$estate['id']}}" href="/estate/show/{{ $estate->id }}" class="border-5 border-[#6c94a4] rounded-4xl w-11/12 my-5 h-100 cursor-pointer welcome-estate content-end"
+                            @if ($estate->photos->isNotEmpty())
+                                style="background-image: url('{{ asset('storage/' . $estate->photos->first()->photo) }}')">
+                            @else
+                                style="background-color: #ccc">
+                            @endif
                             <div id="estate_welcome" class="flex flex-col text-white mb-2 ml-2 p-3 gap-y-1">
-                                <div class="text-sm"><i class="bi bi-building-fill-gear"></i> {{$estate['builder']}}</div>
-                                <div class="text-xl font-extrabold uppercase">{{$estate['complex']}}</div>
-                                <div class="text-md"><i class="bi bi-geo"></i> {{$estate['city']}}</div>
-                                <div class="text-xl font-bold"><i class="bi bi-tag"></i> {{(int)$estate['price']}} ₴</div>
-                                <div class=""><i class="bi bi-geo-alt"></i> {{$estate['street']}}</div>
+                                @php
+                                    if($estate["is_sell"]){
+                                        $price_t = (int)$estate['price'] . " ₴";
+                                    } else {
+                                        $price_t = "₴ " . (int)$estate['price'] . " за місяць";
+                                    }
+                                @endphp
+                                <x-estate.window-text class="text-sm" estate="{{$estate['builder']}}"><i class="bi bi-building-fill-gear"></i></x-estate.window-text>
+                                <x-estate.window-text class="text-xl font-extrabold uppercase" estate="{{$estate['complex']}}" />
+                                <x-estate.window-text class="text-md" estate="{{$estate['city']}}"><i class="bi bi-geo"></i></x-estate.window-text>
+                                <x-estate.window-text class="text-xl font-bold" estate="{{ $price_t }}"><i class="bi bi-tag"></i></x-estate.window-text>
+                                <x-estate.window-text class="text-sm" estate="{{$estate['street']}}"><i class="bi bi-geo-alt"></i></x-estate.window-text>
                             </div>
                         </a>
                     @endforeach

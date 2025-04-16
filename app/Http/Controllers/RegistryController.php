@@ -73,12 +73,17 @@ class RegistryController extends Controller
             }
         }
 
-        return redirect('/dashboard');
+        return redirect('/dashboard/' . $user->id);
     }
 
     public function destroy()
     {
-        Auth::user()->delete();
+        $user = Auth::user();
+        $avatar = $user->avatar;
+        if(! in_array($avatar, $this->avatars())){
+            Storage::disk('public')->delete("avatars/{$avatar}");
+        }
+        $user->delete();
         return redirect('/login');
     }
 }

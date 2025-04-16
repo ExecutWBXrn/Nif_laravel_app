@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\EstatePhotos;
+use App\Policies\EstatePolicy;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider

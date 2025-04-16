@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Estate;
+use App\Models\estate_photos;
+use App\Models\EstatePhotos;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -15,6 +17,6 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::factory(1)->admin()->create();
-        Estate::factory(100)->create();
+        EstatePhotos::factory(100)->create();
     }
 }

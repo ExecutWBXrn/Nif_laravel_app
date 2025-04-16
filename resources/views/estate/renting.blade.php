@@ -1,11 +1,11 @@
 <x-layout>
-    <x-slot:title>Купівля</x-slot:title>
+    <x-slot:title>Орендувати житло</x-slot:title>
     <div class="justify-items-center">
         <div class="w-10/12 p-15">
             <div class="text-5xl text-[#4a545a] font-extrabold text-center mb-20">
-                Купити нерухомість у Івано-Франківську
+                Орендувати нерухомість у Івано-Франківську
             </div>
-            <x-estate.sort action="/estate/buyNIF" sortField="{{$sortField}}" sortDirection="{{$sortDirection}}" />
+            <x-estate.sort action="/estate/rentNIF" sortField="{{$sortField}}" sortDirection="{{$sortDirection}}" />
             <div class="grid grid-cols-4 justify-items-center">
                 @foreach($estates as $estate)
                     <a id="estate-{{$estate['id']}}" href="/estate/show/{{ $estate->id }}" class="border-5 border-[#6c94a4] rounded-4xl w-11/12 my-5 h-150 cursor-pointer welcome-estate content-end"
@@ -18,7 +18,7 @@
                             <x-estate.window-text class="text-sm" estate="{{$estate['builder']}}"><i class="bi bi-building-fill-gear"></i></x-estate.window-text>
                             <x-estate.window-text class="text-xl font-extrabold uppercase" estate="{{$estate['complex']}}" />
                             <x-estate.window-text class="text-md" estate="{{$estate['city']}}"><i class="bi bi-geo"></i></x-estate.window-text>
-                            <x-estate.window-text class="text-xl font-bold" estate="{{(int)$estate['price']}} ₴"><i class="bi bi-tag"></i></x-estate.window-text>
+                            <x-estate.window-text class="text-xl font-bold" estate="₴ {{(int)$estate['price']}} за місяць"><i class="bi bi-tag"></i></x-estate.window-text>
                             <x-estate.window-text class="text-sm" estate="{{$estate['street']}}"><i class="bi bi-geo-alt"></i></x-estate.window-text>
                             @if(in_array($sortField, ['amount_of_room', 'floor', 'floor_estate', 'square', 'square_of_kitchen', 'building_date']))
                                 <x-estate.window-text class="text-sm" estate="{{$estate[$sortField]}}"><i class="bi bi-house-gear-fill"></i> (параметр сортування) </x-estate.window-text>

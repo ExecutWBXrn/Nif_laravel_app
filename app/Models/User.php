@@ -34,6 +34,10 @@ class User extends Authenticatable
         return $this->hasMany(Estate::class);
     }
 
+    public function favoriteEstates()
+    {
+        return $this->hasMany(FavoritePivotModel::class);
+    }
     /**
      * Get the attributes that should be cast.
      *

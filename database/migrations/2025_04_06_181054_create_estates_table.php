@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('estates', function (Blueprint $table) {
             $table->id();
-            $table->string('builder');
-            $table->foreignIdFor(\App\Models\User::class)->constrained('users', 'id');
+            $table->string('builder')->nullable();
+            $table->foreignIdFor(\App\Models\User::class)->constrained('users', 'id')->cascadeOnDelete();
             $table->string('complex')->nullable();
-            $table->string('city')->nullable();
-            $table->decimal('price');
+            $table->string('city');
+            $table->decimal('price', 13, 0);
             $table->string('street');
             $table->boolean('is_sell')->default(true);
             $table->text('description')->nullable();

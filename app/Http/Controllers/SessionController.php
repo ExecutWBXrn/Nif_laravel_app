@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegistryRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\ValidationException;
 
 class SessionController extends Controller
@@ -28,10 +30,9 @@ class SessionController extends Controller
         return redirect('/');
     }
 
-    public function show()
+    public function show(User $user_id)
     {
-        $user = Auth::user();
-        return view('auth.dashboard', ['user' => $user]);
+        return view('auth.dashboard', ['user' => $user_id]);
     }
 
     public function destroy(){
