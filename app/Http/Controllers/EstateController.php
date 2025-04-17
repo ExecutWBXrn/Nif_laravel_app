@@ -17,7 +17,7 @@ class EstateController extends Controller
         $sortField = $request->get('sort', 'created_at');
         $sortDirection = $request->get('direction', 'desc');
 
-        $estates = Estate::with('user')->orderBy($sortField, $sortDirection)->where('is_sell', '=', 1)->paginate(16);
+        $estates = Estate::with('photos')->orderBy($sortField, $sortDirection)->where('is_sell', '=', 1)->paginate(16);
         return view('estate.buying', compact('estates', 'sortField', 'sortDirection'));
     }
 
@@ -26,7 +26,7 @@ class EstateController extends Controller
         $sortField = $request->get('sort', 'created_at');
         $sortDirection = $request->get('direction', 'desc');
 
-        $estates = Estate::with('user')->orderBy($sortField, $sortDirection)->where('user_id', '=', Auth::id())->simplePaginate(10);
+        $estates = Estate::with('photos')->orderBy($sortField, $sortDirection)->where('user_id', '=', Auth::id())->simplePaginate(10);
         return view('estate.my', compact('estates', 'sortField', 'sortDirection'));
     }
 
@@ -34,7 +34,7 @@ class EstateController extends Controller
         $sortField = $request->get('sort', 'created_at');
         $sortDirection = $request->get('direction', 'desc');
 
-        $estates = Estate::with('user')->orderBy($sortField, $sortDirection)->where('is_sell', '=', 0)->paginate(16);
+        $estates = Estate::with('photos')->orderBy($sortField, $sortDirection)->where('is_sell', '=', 0)->paginate(16);
         return view('estate.renting', compact('estates', 'sortField', 'sortDirection'));
     }
 

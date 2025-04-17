@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Estate;
 use App\Models\EstatePhotos;
 use App\Policies\EstatePolicy;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -21,6 +23,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Model::preventLazyLoading();
     }
 }

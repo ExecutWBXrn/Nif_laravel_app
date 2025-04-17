@@ -23,7 +23,7 @@
     background: #845e43;
 }
 
-.font-my-1{
+body {
     font-family: MyCustomFont, sans-serif;
 }
 

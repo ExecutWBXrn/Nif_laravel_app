@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class FavoritePivotModelController extends Controller
 {
     public function index(){
-        $rel = FavoritePivotModel::with('estate')->orderBy('updated_at', 'desc')->where('user_id', '=', Auth::id())->simplePaginate(10);
+        $rel = FavoritePivotModel::with('estate.photos')->orderBy('updated_at', 'desc')->where('user_id', '=', Auth::id())->simplePaginate(10);
         return view('estate.favorite', ['rel' => $rel]);
     }
 

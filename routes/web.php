@@ -8,7 +8,7 @@ use App\Models\Estate;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    $estates = Estate::with('user')->orderBy('created_at', 'desc')->paginate(16);
+    $estates = Estate::with('photos')->orderBy('created_at', 'desc')->paginate(16);
     return view('welcome', ['estates' => $estates]);
 });
 
